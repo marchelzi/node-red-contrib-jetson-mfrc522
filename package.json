@@ -1,0 +1,16 @@
+{
+  "name": "node-red-jetson-mfrc522",
+  "version": "1.0.0",
+  "description": "Simple Node-RED node for the Jetson Nano to read NFC tags via a RC522 NFC reader. It can return the UID and optionaly a data block. Chip Select (SDA) pin is also configurable (defaults to CE0, 24).",
+  "main": "mfrc522.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marchel Fahrezi",
+  "license": "ISC",
+  "node-red": {
+    "nodes": {
+      "mfrc522-reader": "mfrc522.js"
+    }
+  }
+}
