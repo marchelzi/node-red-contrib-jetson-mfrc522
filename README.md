@@ -14,11 +14,11 @@ Enable SPI
 ```
     sudo /opt/nvidia/jetson-io/jetson-io.py
 ```
--Select Configure Jetson 40pin Header
--Then, Select Configure Header pins manually
--Select spi1 and then select exit
--Select Save pin changes
--Select Save and reboot to reconfigure pins
+- Select Configure Jetson 40pin Header
+- Then, Select Configure Header pins manually
+- Select spi1 and then select exit
+- Select Save pin changes
+- Select Save and reboot to reconfigure pins
 - Last, use the following command to enable spidev
 ```
 sudo modprobe spidev
