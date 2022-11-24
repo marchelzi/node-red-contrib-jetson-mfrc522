@@ -16,7 +16,7 @@ if len(sys.argv) > 0:
             uuid, text = reader.read()
             print(uuid, text)
             sleep(sleep_time)
-        except (EOFError, SystemExit, KeyboardInterrupt):
+        except (EOFError, SystemExit, KeyboardInterrupt) as e:
             GPIO.cleanup()
             sys.exit(0)
 
