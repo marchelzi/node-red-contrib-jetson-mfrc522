@@ -14,14 +14,7 @@ if len(sys.argv) > 0:
     while True:
         try:
             uuid, text = reader.read()
-            print(
-                json.dumps(
-                    {
-                        "uuid": uuid,
-                        "text": text,
-                    }
-                )
-            )
+            print(uuid, text)
             sleep(sleep_time)
         except (EOFError, SystemExit, KeyboardInterrupt):
             GPIO.cleanup()

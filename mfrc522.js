@@ -13,25 +13,33 @@ module.exports = function (RED) {
 
         var node = this;
 
-        var child = spawn(mfrc522Command, [node.blockedFor]);
+        node.child = spawn(mfrc522Command, [node.blockedFor]);
 
-        child.stdout.on('data', function (data) {
-            // example data = "{uuid: 12345678, text: MIFARE_1K}"
-            var data = JSON.parse(data);
-            node.send(data);
+        node.child.stdout.on('data', function (data) {
+            // example data = "123456 text"
+            var data = data.toString().split(' ');
+            var msg = {
+                uuid: data[0],
+                text: data[1]
+            };
+            node.send(
+                {
+                    payload: msg
+                }
+            );
 
         });
 
-        child.stderr.on('data', function (data) {
+        node.child.stderr.on('data', function (data) {
             node.error(data.toString());
         });
 
-        child.on('close', function (code) {
+        node.child.on('close', function (code) {
             node.error('MFRC522 process exited with code ' + code);
         });
 
         node.on('close', function () {
-            child.kill();
+            node.child.kill();
         });
     }
 
