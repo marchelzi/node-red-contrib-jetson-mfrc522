@@ -13,6 +13,10 @@
       "mfrc522-reader": "mfrc522.js"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marchelzi/node-red-jetson-mfrc522.git"
+  },
   "keywords": [
     "node-red",
     "node",
