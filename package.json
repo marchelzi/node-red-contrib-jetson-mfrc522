@@ -12,5 +12,14 @@
     "nodes": {
       "mfrc522-reader": "mfrc522.js"
     }
-  }
+  },
+  "keywords": [
+    "node-red",
+    "node",
+    "nfc",
+    "rc522",
+    "mfrc522",
+    "jetson",
+    "nano"
+  ],
 }
