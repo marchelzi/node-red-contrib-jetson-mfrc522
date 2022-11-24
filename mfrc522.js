@@ -39,7 +39,7 @@ module.exports = function (RED) {
         });
 
         node.on('close', function () {
-            node.child.kill();
+            node.child.kill('SIGKILL');
         });
     }
 
