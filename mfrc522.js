@@ -1,18 +1,19 @@
-module.export = function (RED) {
+module.exports = function (RED) {
 
-    var execSync = require('child_process').execSync;
-    var exec = require('child_process').exec;
     var spawn = require('child_process').spawn;
 
     var mfrc522Command = __dirname + '/mfrc522';
 
     process.env.PYTHONBUFFERED = 1;
 
-    function MFRC522Node(config) {
+    function mfrc522Node(config) {
         RED.nodes.createNode(this, config);
+
+        this.blockedFor = config.blockedFor;
+
         var node = this;
 
-        var child = spawn(mfrc522Command);
+        var child = spawn(mfrc522Command, [node.blockedFor]);
 
         child.stdout.on('data', function (data) {
             // example data = "{uuid: 12345678, text: MIFARE_1K}"
@@ -34,6 +35,6 @@ module.export = function (RED) {
         });
     }
 
-    RED.nodes.registerType('mfrc522-reader', MFRC522Node);
+    RED.nodes.registerType('mfrc522-reader', mfrc522Node);
 
 }
