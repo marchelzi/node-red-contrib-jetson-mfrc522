@@ -3,11 +3,13 @@ import sys
 from Jetson_MFRC522 import SimpleMFRC522
 import RPi.GPIO as GPIO
 import json
+
 reader = SimpleMFRC522()
 
 if len(sys.argv) > 0:
-
+    sleep_time = int(sys.argv[1])
     reader = SimpleMFRC522()
+    GPIO.setwarnings(False)
 
     while True:
         try:
@@ -20,7 +22,7 @@ if len(sys.argv) > 0:
                     }
                 )
             )
-            sleep(int(sys.argv[1]))
+            sleep(sleep_time)
         except (EOFError, SystemExit, KeyboardInterrupt):
             GPIO.cleanup()
             sys.exit(0)
