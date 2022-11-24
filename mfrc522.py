@@ -20,7 +20,7 @@ if len(sys.argv) > 0:
                     }
                 )
             )
-            sleep(sys.argv[1])
+            sleep(int(sys.argv[1]))
         except (EOFError, SystemExit, KeyboardInterrupt):
             GPIO.cleanup()
             sys.exit(0)
